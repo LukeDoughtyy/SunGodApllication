@@ -10,6 +10,9 @@ export class RootStore {
   constructor() {
     this.imageDataStore = new ImageDataStore(this);
     this.productDataStore = new ProductDataStore(this);
+
+    this.imageDataStore.init();
+    this.productDataStore.init();
   }
 
   static async instantiate() {

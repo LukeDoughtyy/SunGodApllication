@@ -19,7 +19,7 @@ export class ImageDataStore extends ChildStore {
   }
 
   /**
-   * Setters
+   * Data Setters
    */
 
   async init(): Promise<void> {
@@ -41,7 +41,4 @@ export class ImageDataStore extends ChildStore {
     const imageResponse = await this.fetchImageData();
     this.imageData = imageResponse;
   };
-  /**
-   * Utils
-   */
 }

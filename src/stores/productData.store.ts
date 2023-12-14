@@ -5,7 +5,6 @@ import { ProductData } from "../interfaces/productData.interface";
 import { ChildStore } from "./child.store";
 
 export class ProductDataStore extends ChildStore {
-  
   productData?: ProductData;
 
   constructor(rootStore: RootStore) {
@@ -20,7 +19,7 @@ export class ProductDataStore extends ChildStore {
   }
 
   /**
-   * Setters
+   * Data Setters
    */
 
   async init(): Promise<void> {
@@ -42,7 +41,4 @@ export class ProductDataStore extends ChildStore {
     const productResponse = await this.fetchProductData();
     this.productData = productResponse;
   };
-  /**
-   * Utils
-   */
 }

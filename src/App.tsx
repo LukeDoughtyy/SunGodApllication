@@ -8,7 +8,7 @@ function App() {
   const [count, setCount] = useState(0);
   const { imageDataStore } = useRootStore();
 
-  console.log(imageDataStore.fetchImageData());
+  // console.log(imageDataStore.imageData);
 
   return (
     <>

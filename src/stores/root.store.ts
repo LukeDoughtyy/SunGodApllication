@@ -1,12 +1,15 @@
 import { ImageDataStore } from "./imageData.store"; // image store and image data
+import { ProductDataStore } from "./productData.store";
 
 export class RootStore {
   private static instance: RootStore;
 
   public imageDataStore: ImageDataStore;
+  public productDataStore: ProductDataStore;
 
   constructor() {
     this.imageDataStore = new ImageDataStore(this);
+    this.productDataStore = new ProductDataStore(this);
   }
 
   static async instantiate() {

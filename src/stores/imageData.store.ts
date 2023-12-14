@@ -1,17 +1,30 @@
 import { RootStore } from "./root.store";
 
 import { observable, action, makeObservable } from "mobx";
-import { ImageData } from "../interfaces/imageData.interface";
+import {
+  ImageData,
+  Image,
+  Lens,
+  SceneImage,
+} from "../interfaces/imageData.interface";
 import { ChildStore } from "./child.store";
 
 export class ImageDataStore extends ChildStore {
   imageData?: ImageData[];
+  selectedImage?: ImageData;
+  selectedNakedEyeImage?: Image;
+  selectedLensImage?: Image;
+  selectedLens?: Lens;
 
   constructor(rootStore: RootStore) {
     super(rootStore);
 
     makeObservable(this, {
       imageData: observable,
+      selectedImage: observable,
+      selectedNakedEyeImage: observable,
+      selectedLensImage: observable,
+      selectedLens: observable,
       init: action,
     });
 
@@ -40,5 +53,56 @@ export class ImageDataStore extends ChildStore {
   loadImageData = async () => {
     const imageResponse = await this.fetchImageData();
     this.imageData = imageResponse;
+    this.selectedImage = imageResponse[0];
+    this.selectedNakedEyeImage = imageResponse[0].nakedEyeImage;
+    this.selectedLensImage = imageResponse[0].sceneImages.rgle_8Pblue.image;
+    this.selectedLens = imageResponse[0].sceneImages.rgle_8Pblue;
+  };
+
+  /**
+   * Data Handlers
+   */
+
+  setSelectedNakedEyeImage = (imageToSet: ImageData) => {
+    this.selectedNakedEyeImage = imageToSet.nakedEyeImage;
+    this.selectedLensImage = imageToSet.sceneImages.rgle_8Pblue.image;
+    this.selectedImage = imageToSet;
+  };
+
+  setSelectedLensImage = (imageToSet: string) => {
+    if (this.selectedImage) {
+      const arrayOfLensImageNames = [];
+      for (const lensImageName in this.selectedImage.sceneImages) {
+        arrayOfLensImageNames.push(lensImageName);
+      }
+      this.selectedLensImage = this.selectedImage.sceneImages[imageToSet].image;
+      this.selectedLens = this.selectedImage.sceneImages[imageToSet];
+    }
+  };
+
+  getSelectedNakedEyeImage = (): Image | undefined => {
+    return this.selectedNakedEyeImage;
+  };
+
+  getSelectedLensImage = (): Image | undefined => {
+    return this.selectedLensImage;
+  };
+
+  getAllNakedEyeImages = (): Image[] | undefined => {
+    if (this.imageData) {
+      const imageArray: Image[] = [];
+      this.imageData.forEach((image) => {
+        imageArray.push(image.nakedEyeImage);
+      });
+      return imageArray;
+    }
+    return undefined;
+  };
+
+  getLensImagesForCurrentNaked = (): SceneImage | undefined => {
+    if (this.selectedImage) {
+      return this.selectedImage.sceneImages;
+    }
+    return undefined;
   };
 }

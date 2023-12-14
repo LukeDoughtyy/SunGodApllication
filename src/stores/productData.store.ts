@@ -41,4 +41,8 @@ export class ProductDataStore extends ChildStore {
     const productResponse = await this.fetchProductData();
     this.productData = productResponse;
   };
+
+  /**
+   * Data Handlers
+   */
 }

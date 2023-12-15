@@ -1,11 +1,16 @@
-# React + TypeScript + Vite
+## SunGod Lens Guide MVP Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This application has been written to create a React Functional Component that can demonstrate to the user the difference between different types of polarized lenses that SunGod offers. The component is made of 3 smaller components:
 
-Currently, two official plugins are available:
+1. `PageLayout` - The layout of the component and the selection of lenses.
+2. `ImageViewer` - The image displaying component, handles showing images and adjusting displayed percentage.
+3. `ImageSelector` - The image selecting component, handles which base image is selected.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+
+1. `git clone https://github.com/LukeDoughtyy/SunGodApllication.git` - clone this repo
+2. `npm install` - install dependencies
+3. `npm run dev` - run application
 
 ## Expanding the ESLint configuration
 
@@ -17,12 +22,12 @@ If you are developing a production application, we recommend updating the config
 export default {
   // other rules...
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
+    ecmaVersion: "latest",
+    sourceType: "module",
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
     tsconfigRootDir: __dirname,
   },
-}
+};
 ```
 
 - Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`

@@ -6,6 +6,16 @@ import { ImageSelector } from "./imageSelector";
 
 export interface ImageViewerProps {}
 
+/**
+ *
+ * Component for displaying lens types that are being conpared.
+ *
+ * Displays selectedLensImage and selectedNakedEyeImage from store.
+ *
+ * Uses slider position to adjust width of respective images.
+ *
+ */
+
 export const ImageViewer: FC<ImageViewerProps> = observer(() => {
   const { imageDataStore } = useRootStore();
 

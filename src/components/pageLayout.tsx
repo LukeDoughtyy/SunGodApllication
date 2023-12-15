@@ -13,6 +13,16 @@ import { useRootStore } from "../main";
 
 export interface PageLayoutProps {}
 
+/**
+ *
+ * Base Layout of MVP
+ *
+ * Uses Material UI paper at lowest elevation for page layout
+ *
+ * Component spacing can be balanced using styles here
+ *
+ */
+
 export const PageLayout: FC<PageLayoutProps> = observer(() => {
   const { imageDataStore } = useRootStore();
   const [selectedLensImageName, setSelectedLensImageName] = useState<string>();

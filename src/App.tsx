@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { PageLayout } from "./components/pageLayout";
 import CircularProgress from "@mui/material/CircularProgress";
 import { observer } from "mobx-react-lite";

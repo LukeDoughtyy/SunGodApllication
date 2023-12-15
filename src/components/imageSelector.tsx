@@ -6,6 +6,13 @@ import ClearIcon from "@mui/icons-material/Clear";
 
 export interface ImageSelectorProps {}
 
+/**
+ *
+ * Component for selecting which Naked Eye base image is displayed.
+ *
+ * Maps imageData observable in store into images to select.
+ *
+ */
 export const ImageSelector: FC<ImageSelectorProps> = observer(() => {
   const { imageDataStore } = useRootStore();
 

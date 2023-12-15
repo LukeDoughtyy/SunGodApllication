@@ -1,6 +1,15 @@
 import { ImageDataStore } from "./imageData.store"; // image store and image data
 import { ProductDataStore } from "./productData.store";
 
+
+/**
+ *
+ * Root store that is initialised when the App is ran
+ *
+ * Initialises the other stores, does nothing else.
+ *
+ */
+
 export class RootStore {
   private static instance: RootStore;
 

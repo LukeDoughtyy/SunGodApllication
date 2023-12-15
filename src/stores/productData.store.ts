@@ -4,6 +4,15 @@ import { observable, action, makeObservable } from "mobx";
 import { ProductData } from "../interfaces/productData.interface";
 import { ChildStore } from "./child.store";
 
+/**
+ *
+ * Store for holding data from the product API
+ *
+ * Returns data about products, useful for expanding this component to work with different products with different lenses
+ *
+ * Currently not used for this app
+ *
+ */
 export class ProductDataStore extends ChildStore {
   productData?: ProductData;
 
@@ -26,6 +35,9 @@ export class ProductDataStore extends ChildStore {
     this.loadProductData();
   }
 
+  /**
+   * Fetch product data from API and transform into ProductData interface type
+   */
   async fetchProductData(): Promise<ProductData> {
     return await fetch(
       "https://www.sungod.co/products/9150/renegades?pdp=1"

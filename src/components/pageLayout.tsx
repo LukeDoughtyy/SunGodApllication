@@ -16,9 +16,9 @@ export interface PageLayoutProps {}
 /**
  *
  * Base Layout of MVP
- * 
+ *
  * Uses Material UI paper at lowest elevation for page layout
- * 
+ *
  * Component spacing can be balanced using styles here
  *
  */

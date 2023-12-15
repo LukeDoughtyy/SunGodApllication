@@ -3,7 +3,7 @@ import { createContext, ReactNode, useContext } from "react";
 import ReactDOM from "react-dom/client";
 
 import { App } from "./App.tsx";
-import "./index.css";
+import "./index.scss";
 import { RootStore } from "./stores/root.store";
 
 // holds a reference to the store (singleton)

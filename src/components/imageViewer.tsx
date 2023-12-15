@@ -20,52 +20,26 @@ export const ImageViewer: FC<ImageViewerProps> = observer(() => {
     imageDataStore.selectedLensImage
   ) {
     return (
-      <Paper elevation={10} sx={{ width: "81%", height: 900 }}>
-        <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
+      <Paper elevation={10}>
+        <Box className="image-viewer-container">
           <Box
             component="img"
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              height: 900,
-              width: 900 * (overlayPosition / 100),
-              minWidth: 900,
-              maxWidth: {
-                xs: 900 * (overlayPosition / 100),
-                md: 900 * (overlayPosition / 100),
-              },
-            }}
+            className="image-viewer-container__image-constants"
+            sx={lensViewBox(overlayPosition)}
             alt={imageDataStore.selectedLensImage.responsiveImage.alt}
             src={imageDataStore.selectedLensImage.responsiveImage.src}
           />
           <Box
             component="img"
-            sx={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              height: 900,
-              minWidth: 900,
-
-              width: 900 * (overlayPosition / 100),
-              maxWidth: { xs: 900, md: 900 },
-              clipPath: `polygon(0% 0%, ${overlayPosition}% 0%, ${overlayPosition}% 100%, 0% 100%)`,
-            }}
+            className="image-viewer-container__image-constants"
+            sx={nakedEyeImageViewBox(overlayPosition)}
             alt={imageDataStore.selectedNakedEyeImage.responsiveImage.alt}
             src={imageDataStore.selectedNakedEyeImage.responsiveImage.src}
           />
           <Slider
             value={overlayPosition}
             onChange={(_, newVal) => handleOverlayChange(newVal as number)}
-            sx={{
-              position: "absolute",
-              width: "100%",
-              top: 450,
-              left: 0,
-              bottom: 0,
-              zIndex: 1,
-            }}
+            className="image-viewer-container__percentage-slider"
           />
           <ImageSelector />
         </Box>
@@ -74,4 +48,18 @@ export const ImageViewer: FC<ImageViewerProps> = observer(() => {
   } else {
     return <></>;
   }
+});
+
+const lensViewBox = (overlayPosition: number) => ({
+  width: 900 * (overlayPosition / 100),
+  maxWidth: {
+    xs: 900 * (overlayPosition / 100),
+    md: 900 * (overlayPosition / 100),
+  },
+});
+
+const nakedEyeImageViewBox = (overlayPosition: number) => ({
+  width: 900 * (overlayPosition / 100),
+  maxWidth: { xs: 900, md: 900 },
+  clipPath: `polygon(0% 0%, ${overlayPosition}% 0%, ${overlayPosition}% 100%, 0% 100%)`,
 });

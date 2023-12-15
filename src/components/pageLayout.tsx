@@ -26,14 +26,14 @@ export const PageLayout: FC<PageLayoutProps> = observer(() => {
   }
 
   return (
-    <Paper elevation={0} style={{ display: "flex" }}>
+    <Paper elevation={0}>
       <div style={{ width: "100%", display: "flex", height: "100%" }}>
         <Box sx={{ minWidth: 220, width: "30%" }}>
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Lens</InputLabel>
+            <InputLabel id="lens-input">Lens</InputLabel>
             <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              labelId="lens-input-label"
+              id="lens-select"
               value={selectedLensImageName}
               label="Lens"
               onChange={(image) => {
